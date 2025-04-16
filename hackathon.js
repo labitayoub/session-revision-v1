@@ -17,15 +17,16 @@ let candidatures = [{
   }];
                       
   
-  function ajouterCandidature(nom, age, projet,statut){
+  function ajouterCandidature(nom, age, projet, statut = "en attente"){
   let nouveauCandidat = {
-  id:cpt++,
-    nom: "hassan",
-    age: 33,
-    projet: "java",
-    statut: "en attente",
+    id: cpt++,
+    nom: nom,
+    age: age,
+    projet: projet,
+    statut: statut,
   };
       candidatures.push(nouveauCandidat);
+      return nouveauCandidat;
   }
   // console.log(candidatures);
 
@@ -41,37 +42,49 @@ let candidatures = [{
   
 function validerCandidature(id) {
   for(let i = 0; i < candidatures.length; i++) {
-    if(candidatures[i].id == 3) {
+    if(candidatures[i].id == id) {
       candidatures[i].statut = "validée";
+
       console.log(candidatures[i].nom);
-      return;
+
     }
   }
-  console.log( id);
+  console.log(id);
+
 }
 
 function rejeterCandidature(id) {
   for(let i = 0; i < candidatures.length; i++) {
-    if(candidatures[i].id == 3) {
+    if(candidatures[i].id == id) {
       candidatures[i].statut = "rejetée";
-      console.log( candidatures[i].nom);
-      return;
+      console.log(candidatures[i].nom);
+
     }
   }
-  console.log( id);
+  console.log(id);
+
 }
+
 function rechercherCandidat(nom) {
   for(let i = 0; i < candidatures.length; i++) {
-    if(candidatures[i].nom == "Ali") {
-      let find =candidatures[i];
-      return;
+    if(candidatures[i].nom == nom) {
+      let find = candidatures[i];
+      console.log(find.id +"-"+find.nom+"-"+find.age+"-"+find.projet+"-"+find.statut);
+
     }
   }
-  console.log(find.id +"-"+find.nom+"-"+find.age+"-"+find.projet+"-"+find.statut );
+  console.log(nom);
+
 }
+
+
 afficherToutesLesCandidatures();
-ajouterCandidature()
-rechercherCandidat()
+
+ajouterCandidature("Hassan", 33, "Application Java");
+
+validerCandidature("3");
+
+rechercherCandidat("Ali");
 
 
 
